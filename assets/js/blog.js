@@ -1,8 +1,11 @@
 // TODO: Create a variable that selects the main element, and a variable that selects the back button element
-var
-var
+// DONE
+const main = document.getElementById('main');
+const back = document.getElementById('back');
 
+const articleContainer = document.getElementById('ul');
 // TODO: Create a function that builds an element and appends it to the DOM
+// DONE
 function buildPost () {
   const usernameInput = document.getElementById('username');
   const titleInput = document.getElementById('title');
@@ -21,25 +24,35 @@ function buildPost () {
   article.appendChild(content);
   article.appendChild(username);
 
-  const articleContainer = document.getElementById('ul');
   articleContainer.appendChild(article);
-}
+};
 
 // TODO: Create a function that handles the case where there are no blog posts to display
-function noPosts () {
-
-}
+// DONE
+function noBlogs () {
+    if (articleContainer.children.length === 0) {
+        const noBlogsMessage = document.createElement('h3');
+        noBlogsMessage.textContent = "There are no blogs posted yet. Go back to the homepage and be the first!";
+        articleContainer.appendChild(noBlogsMessage);
+      };
+};
 
 // TODO: Create a function called `renderBlogList` that renders the list of blog posts if they exist. If not, call the no posts function.
+// ??? im questioning my method of calling on the array. local storage?? need to debug and test...
 function renderBlogList () {
-    if {
-
-    } else {}
-}
+    if (articleContainer.children.length > 0) { 
+      blogList.forEach(blogListData => {
+        buildPost();
+      })
+    } else {noBlogs()};
+};
 
 // TODO: Call the `renderBlogList` function
+// DONE
+renderBlogList();
 
 // TODO: Redirect to the home page using the `redirectPage` function found in logic.js when the back button is clicked
+// ??? need to make sure it's linked between both pages, swap 'url' to something else and between apostrophes in let?
 let redirectURL = '';
 
 const redirectPage = function (url) {
