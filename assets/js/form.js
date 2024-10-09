@@ -14,8 +14,7 @@ function postSubmission () {
         const content = blogPost.querySelector('#content').value;
 
         if (!username || !title || !content) {
-            alert('Please fill in all three fields before submitting.');
-            return;
+            document.getElementById("error").textContent = `Please complete the form.`;
         }
 
         const blogPost = [username, title, content];

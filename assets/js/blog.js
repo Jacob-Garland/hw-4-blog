@@ -1,7 +1,7 @@
 // TODO: Create a variable that selects the main element, and a variable that selects the back button element
 // DONE
 const back = document.getElementById('back');
-const blogContainer = document.querySelector('#blogs');
+const blogContainer = document.getElementById('blogs');
 let blogList = [];
 
 // TODO: Create a function that builds an element and appends it to the DOM
@@ -30,9 +30,8 @@ function buildPost () {
 // TODO: Create a function that handles the case where there are no blog posts to display
 // DONE
 function noBlogs () {
-  const noBlogsMessage = document.createElement('h2');
-  noBlogsMessage.textContent = 'No blog posts yet... Press the back button at the top and be the first!';
-  blogContainer.appendChild(noBlogsMessage);
+  const noBlogsMessage = document.getElementById(post);
+  noBlogsMessage.textContent = `No blog posts yet...`;
 };
 
 // TODO: Create a function called `renderBlogList` that renders the list of blog posts if they exist. If not, call the no posts function.
