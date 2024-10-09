@@ -17,7 +17,7 @@ if (savedMode === 'dark') {
 toggle.addEventListener('click', toggleMode);
 
 // TODO: Create a function called `readLocalStorage` that reads from local storage and returns the data. If no data exists, return an empty array.
-// 
+// DONE
 function readLocalStorage() {
   const storedBlogs = localStorage.getItem("blogList");
   return storedBlogs ? JSON.parse(storedBlogs) || [] : [];
