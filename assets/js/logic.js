@@ -1,5 +1,4 @@
 // TODO: Create logic to toggle the light/dark mode styles for the page and circle. The mode should be saved to local storage.
-// DONE
 const toggle = document.getElementById('toggle');
 
 function toggleMode() {
@@ -17,15 +16,14 @@ if (savedMode === 'dark') {
 toggle.addEventListener('click', toggleMode);
 
 // TODO: Create a function called `readLocalStorage` that reads from local storage and returns the data. If no data exists, return an empty array.
-// DONE
 function readLocalStorage() {
   const storedBlogs = localStorage.getItem("blogList");
   return storedBlogs ? JSON.parse(storedBlogs) || [] : [];
 };
 
 // TODO: Create a function called `storeLocalStorage` that takes a given object and saves the new data to the existing blog data in local storage.
-function storeLocalStorage(blogList, newArticle) {
-  const existingBlogList = readLocalStorage(blogList);
+function storeLocalStorage(blogListKey, newArticle) {
+  const existingBlogList = readLocalStorage(blogListKey);
   const updatedBlogList = [existingBlogList, newArticle];
-  localStorage.setItem(blogList, JSON.stringify(updatedBlogList));
+  localStorage.setItem(blogListKey, JSON.stringify(updatedBlogList));
 }
