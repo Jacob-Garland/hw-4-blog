@@ -1,5 +1,5 @@
 // TODO: Create a variable that selects the form element
-const blogPostForm = document.getElementById('blogPost');
+const blogPostForm = document.getElementById('form');
 
 // TODO: Create a function that handles the form submission. Grab the form data and store it in local storage, then redirect to the blog page using the `redirectPage` function. If the form is submitted with missing data, display an error message to the user.
 function postSubmission (event) {
@@ -14,10 +14,10 @@ function postSubmission (event) {
         return;
     }
 
-    const blogPost = { username, title, content };
-    const storedBlogs = JSON.parse(localStorage.getItem('blogPost')) || [];
-    storedBlogs.push(blogPost);
-    localStorage.setItem('blogPost', JSON.stringify(storedBlogs));
+    const blogList = { username, title, content };
+    const storedBlogs = JSON.parse(localStorage.getItem('blogList')) || [];
+    storedBlogs.push(blogList);
+    localStorage.setItem('blogList', JSON.stringify(storedBlogs));
 
     blogPostForm.reset();
 

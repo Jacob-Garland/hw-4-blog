@@ -1,7 +1,7 @@
 // TODO: Create a variable that selects the main element, and a variable that selects the back button element
 const back = document.getElementById('back');
 const blogContainer = document.getElementById('blogs');
-let blogList = [];
+const post = document.getElementById('post');
 
 // TODO: Create a function that builds an element and appends it to the DOM
 function buildPost (username, title, content) {
@@ -23,19 +23,30 @@ function buildPost (username, title, content) {
 
 // TODO: Create a function that handles the case where there are no blog posts to display
 function noBlogs () {
-  const noBlogsMessage = document.getElementById('no-blogs-message');
+  const noBlogsMessage = document.createElement('h2');
   noBlogsMessage.textContent = `No blog posts yet...`;
+  post.appendChild(noBlogsMessage);
 };
 
 // TODO: Create a function called `renderBlogList` that renders the list of blog posts if they exist. If not, call the no posts function.
 function renderBlogList () {
-  const storedBlogs = readLocalStorage('blogList');
+  function readLocalStorage() {
+    const storedPosts = localStorage.getItem('blogList');
+  
+    if (storedPosts) {
+      return JSON.parse(storedPosts);
+    } else {
+      return [];
+    }
+  };
+
+  const storedBlogs = readLocalStorage();
 
   if (storedBlogs.length === 0) {
-    noBlogs();
+    noBlogs;
   } else {
-    storedBlogs.forEach(blogPost => {
-      buildPost(blogPost.username, blogPost.title, blogPost.content);
+    storedBlogs.forEach(blog => {
+      buildPost(blog.username, blog.title, blog.content)
     });
   }
 };
