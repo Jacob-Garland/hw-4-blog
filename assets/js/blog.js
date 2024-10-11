@@ -1,7 +1,6 @@
 // TODO: Create a variable that selects the main element, and a variable that selects the back button element
 const back = document.getElementById('back');
 const blogContainer = document.getElementById('blogs');
-const post = document.getElementById('post');
 
 // TODO: Create a function that builds an element and appends it to the DOM
 function buildPost (username, title, content) {
@@ -11,8 +10,8 @@ function buildPost (username, title, content) {
   titleElement.textContent = title;
   const contentElement = document.createElement('p');
   contentElement.textContent = content;
-  const usernameElement = document.createElement('p');
-  usernameElement.textContent = "Posted by:" + username;
+  const usernameElement = document.createElement('blockquote');
+  usernameElement.textContent = "Posted by: " + username;
 
   article.appendChild(titleElement);
   article.appendChild(contentElement);
@@ -23,27 +22,22 @@ function buildPost (username, title, content) {
 
 // TODO: Create a function that handles the case where there are no blog posts to display
 function noBlogs () {
-  const noBlogsMessage = document.createElement('h2');
+  const noBlogsMessage = document.getElementById('blogs');
   noBlogsMessage.textContent = `No blog posts yet...`;
-  post.appendChild(noBlogsMessage);
+  blogContainer.appendChild(noBlogsMessage);
 };
 
 // TODO: Create a function called `renderBlogList` that renders the list of blog posts if they exist. If not, call the no posts function.
 function renderBlogList () {
   function readLocalStorage() {
     const storedPosts = localStorage.getItem('blogList');
-  
-    if (storedPosts) {
-      return JSON.parse(storedPosts);
-    } else {
-      return [];
-    }
+    return storedPosts ? JSON.parse(storedPosts) || [] : [];
   };
 
   const storedBlogs = readLocalStorage();
 
   if (storedBlogs.length === 0) {
-    noBlogs;
+    noBlogs();
   } else {
     storedBlogs.forEach(blog => {
       buildPost(blog.username, blog.title, blog.content)
