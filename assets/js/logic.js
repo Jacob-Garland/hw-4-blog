@@ -5,6 +5,12 @@ function toggleMode() {
   const body = document.body;
   body.classList.toggle('dark');
 
+  if (body.classList.contains('dark')) {
+    toggle.innerHTML = '&#127762;';
+  } else {
+    toggle.innerHTML = '&#127774;';
+  };
+
   localStorage.setItem('mode', body.classList.contains('dark') ? 'dark' : 'light');
 };
 
